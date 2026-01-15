@@ -116,8 +116,9 @@ public class ClientePedidoComercialTest {
 
         // Consulta con EntityManager
         List<ClienteRepository.IdNomApellido1> list3 = entityManager.createQuery("""
-                select c.id, c.nombre, c.apellido1 
+                select c.id, c.nombre, c.apellido1
                 from Cliente c 
+                where c.apellido2 is not null
                 order by c.apellido1, c.apellido2, c.nombre
                 """, ClienteRepository.IdNomApellido1.class).getResultList();
         list3.forEach(System.out::println);

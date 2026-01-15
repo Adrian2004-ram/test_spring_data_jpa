@@ -22,7 +22,7 @@ public interface ClienteRepository extends JpaRepository<Cliente, Long> {
     record IdNomApellido1(Long id, String nombre, String apellido1) {};
     List<IdNomApellido1> findByApellido2IsNotNullOrderByApellido1AscApellido2AscNombre();
 
-    @Query("select c.id, c.nombre, c.apellido1 from Cliente c order by c.apellido1, c.apellido2, c.nombre")
+    @Query("select c.id, c.nombre, c.apellido1 from Cliente c where c.apellido2 is not null order by c.apellido1, c.apellido2, c.nombre")
     List<IdNomApellido1> obteneridNomApell1();
 
 
