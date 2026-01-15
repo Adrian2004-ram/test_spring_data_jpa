@@ -34,6 +34,9 @@ public class Pedido {
     // Lado PROPIETARIO, es el que tiene FK
     @ManyToOne
     private Comercial comercial;
+
+    @ManyToOne
+    private Cliente cliente;
     
 
 }

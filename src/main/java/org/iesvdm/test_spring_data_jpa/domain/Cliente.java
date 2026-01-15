@@ -1,11 +1,12 @@
 package org.iesvdm.test_spring_data_jpa.domain;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Data
 @NoArgsConstructor
@@ -21,5 +22,23 @@ public class Cliente {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Include
     private Long id;
+
+    @Column(length = 100)
+    private String nombre;
+
+    @Column(length = 100)
+    private String apellido1;
+
+    @Column(length = 100)
+    private String apellido2;
+
+    private String ciudad;
+
+    private Integer categoria;
+
+    @OneToMany(mappedBy = "cliente")
+    @Builder.Default
+    @ToString.Exclude
+    private Set<Pedido> pedidos = new HashSet<>();
 
 }

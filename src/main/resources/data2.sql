@@ -1,0 +1,36 @@
+INSERT INTO cliente (id, nombre, apellido1, apellido2, ciudad, categoria) VALUES (1, 'Aarón', 'Rivero', 'Gómez', 'Almería', 100);
+INSERT INTO cliente (id, nombre, apellido1, apellido2, ciudad, categoria) VALUES (2, 'Adela', 'Salas', 'Díaz', 'Granada', 200);
+INSERT INTO cliente (id, nombre, apellido1, apellido2, ciudad, categoria) VALUES (3, 'Adolfo', 'Rubio', 'Flores', 'Sevilla', NULL);
+INSERT INTO cliente (id, nombre, apellido1, apellido2, ciudad, categoria) VALUES (4, 'Adrián', 'Suárez', NULL, 'Jaén', 300);
+INSERT INTO cliente (id, nombre, apellido1, apellido2, ciudad, categoria) VALUES (5, 'Marcos', 'Loyola', 'Méndez', 'Almería', 200);
+INSERT INTO cliente (id, nombre, apellido1, apellido2, ciudad, categoria) VALUES (6, 'María', 'Santana', 'Moreno', 'Cádiz', 100);
+INSERT INTO cliente (id, nombre, apellido1, apellido2, ciudad, categoria) VALUES (7, 'Pilar', 'Ruiz', NULL, 'Sevilla', 300);
+INSERT INTO cliente (id, nombre, apellido1, apellido2, ciudad, categoria) VALUES (8, 'Pepe', 'Ruiz', 'Santana', 'Huelva', 200);
+INSERT INTO cliente (id, nombre, apellido1, apellido2, ciudad, categoria) VALUES (9, 'Guillermo', 'López', 'Gómez', 'Granada', 225);
+INSERT INTO cliente (id, nombre, apellido1, apellido2, ciudad, categoria) VALUES (10, 'Daniel', 'Santana', 'Loyola', 'Sevilla', 125);
+
+INSERT INTO comercial (id, nombre, apellido1, apellido2, ciudad, comision) VALUES (1, 'Daniel', 'Sáez', 'Vega', NULL, 0.15);
+INSERT INTO comercial (id, nombre, apellido1, apellido2, ciudad, comision) VALUES (2, 'Juan', 'Gómez', 'López', NULL, 0.13);
+INSERT INTO comercial (id, nombre, apellido1, apellido2, ciudad, comision) VALUES (3, 'Diego', 'Flores', 'Salas', NULL, 0.11);
+INSERT INTO comercial (id, nombre, apellido1, apellido2, ciudad, comision) VALUES (4, 'Marta', 'Herrera', 'Gil', NULL, 0.14);
+INSERT INTO comercial (id, nombre, apellido1, apellido2, ciudad, comision) VALUES (5, 'Antonio', 'Carretero', 'Ortega', NULL, 0.12);
+INSERT INTO comercial (id, nombre, apellido1, apellido2, ciudad, comision) VALUES (6, 'Manuel', 'Domínguez', 'Hernández', NULL, 0.13);
+INSERT INTO comercial (id, nombre, apellido1, apellido2, ciudad, comision) VALUES (7, 'Antonio', 'Vega', 'Hernández', NULL, 0.11);
+INSERT INTO comercial (id, nombre, apellido1, apellido2, ciudad, comision) VALUES (8, 'Alfredo', 'Ruiz', 'Flores', NULL, 0.05);
+
+INSERT INTO pedido (id, cantidad, fecha, comercial_id, cliente_id) VALUES (1, 150.5, '2017-10-05', 5, 2);
+INSERT INTO pedido (id, cantidad, fecha, comercial_id, cliente_id) VALUES (2, 270.65, '2016-09-10', 1, 5);
+INSERT INTO pedido (id, cantidad, fecha, comercial_id, cliente_id) VALUES (3, 65.26, '2016-08-17', 1, 3);
+INSERT INTO pedido (id, cantidad, fecha, comercial_id, cliente_id) VALUES (4, 110.5, '2016-08-17', 8, 3);
+INSERT INTO pedido (id, cantidad, fecha, comercial_id, cliente_id) VALUES (5, 948.5, '2016-07-29', 1, 1);
+INSERT INTO pedido (id, cantidad, fecha, comercial_id, cliente_id) VALUES (6, 2400.0, '2016-07-27', 1, 7);
+INSERT INTO pedido (id, cantidad, fecha, comercial_id, cliente_id) VALUES (7, 650.8, '2015-09-10', 1, 6);
+INSERT INTO pedido (id, cantidad, fecha, comercial_id, cliente_id) VALUES (8, 1983.43, '2017-10-10', 6, 2);
+INSERT INTO pedido (id, cantidad, fecha, comercial_id, cliente_id) VALUES (9, 345.6, '2016-10-06', 1, 4);
+INSERT INTO pedido (id, cantidad, fecha, comercial_id, cliente_id) VALUES (10, 250.45, '2015-06-28', 8, 2);
+INSERT INTO pedido (id, cantidad, fecha, comercial_id, cliente_id) VALUES (11, 110.5, '2016-08-17', 8, 3);
+INSERT INTO pedido (id, cantidad, fecha, comercial_id, cliente_id) VALUES (12, 3045.6, '2017-04-25', 1, 5);
+INSERT INTO pedido (id, cantidad, fecha, comercial_id, cliente_id) VALUES (13, 145.82, '2017-04-25', 1, 5);
+INSERT INTO pedido (id, cantidad, fecha, comercial_id, cliente_id) VALUES (14, 145.82, '2017-04-25', 1, 5);
+INSERT INTO pedido (id, cantidad, fecha, comercial_id, cliente_id) VALUES (15, 370.85, '2019-03-11', 1, 5);
+INSERT INTO pedido (id, cantidad, fecha, comercial_id, cliente_id) VALUES (16, 2389.23, '2019-03-11', 1, 5);
