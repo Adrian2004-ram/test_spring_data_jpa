@@ -1,10 +1,13 @@
 package org.iesvdm.test_spring_data_jpa.repo;
 
 import org.iesvdm.test_spring_data_jpa.domain.Pedido;
+import org.springframework.data.domain.Limit;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Repository
@@ -19,6 +22,11 @@ public interface PedidoRepository extends JpaRepository<Pedido, Long> {
     // La consulta se resuerve sobre la query derivada del nombre del método
     public List<Pedido> findAllByOrderByFechaDesc();
 
+    // Test 2
     public List<Pedido> findTop2ByOrderByCantidadDesc();
+
+    List<Pedido> findByFechaBetweenAndCantidadGreaterThan(LocalDateTime inicio, LocalDateTime fin, double cantidad);
+
+
 
 }

@@ -1,11 +1,18 @@
 package org.iesvdm.test_spring_data_jpa;
 
+import jakarta.persistence.EntityManager;
+import org.iesvdm.test_spring_data_jpa.domain.Cliente;
+import org.iesvdm.test_spring_data_jpa.domain.Comercial;
 import org.iesvdm.test_spring_data_jpa.domain.Pedido;
+import org.iesvdm.test_spring_data_jpa.repo.ClienteRepository;
+import org.iesvdm.test_spring_data_jpa.repo.ComercialRepository;
 import org.iesvdm.test_spring_data_jpa.repo.PedidoRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @SpringBootTest
@@ -13,6 +20,15 @@ public class ClientePedidoComercialTest {
 
     @Autowired
     PedidoRepository pedidoRepository;
+
+    @Autowired
+    ClienteRepository clienteRepository;
+
+    @Autowired
+    ComercialRepository comercialRepository;
+
+    @Autowired
+    EntityManager entityManager;
 
 
 //    Consultas sobre una tabla
@@ -43,13 +59,70 @@ public class ClientePedidoComercialTest {
 
 //    Devuelve un listado con los identificadores de los clientes que han realizado algún pedido. Tenga en cuenta que no debe mostrar identificadores que estén repetidos.
 
+    @Test
+    void test3() {
+
+        List<ClienteRepository.IdDto> ids = clienteRepository.findDistinctByPedidos_IdIsNotNull();
+
+        ids.forEach(System.out::println);
+
+    }
+
 //    Devuelve un listado de todos los pedidos que se realizaron durante el año 2017, cuya cantidad total sea superior a 500€.
+
+    @Test
+    void test4() {
+
+        List<Pedido> pedidos= pedidoRepository.findByFechaBetweenAndCantidadGreaterThan(LocalDateTime.of(2017, 1, 1, 0, 0), LocalDateTime.of(2017, 12, 31, 23, 59, 59), 500);
+
+        pedidos.forEach(System.out::println);
+
+    }
 
 //    Devuelve un listado con el nombre y los apellidos de los comerciales que tienen una comisión entre 0.05 y 0.11.
 
+    @Test
+    void test5() {
+
+        List<ComercialRepository.NomApellDto> comerciales= comercialRepository.findByComisionBetween(new BigDecimal("0.05"), new BigDecimal("0.11"));
+
+        comerciales.forEach(System.out::println);
+
+    }
+
 //    Devuelve el valor de la comisión de mayor valor que existe en la tabla comercial.
 
+    @Test
+    void test6() {
+
+        BigDecimal cantidad = comercialRepository.obtenerMayorComision();
+
+        System.out.println("----------------------------------------Cantidad mayor: " + cantidad);
+
+    }
+
 //    Devuelve el identificador, nombre y primer apellido de aquellos clientes cuyo segundo apellido no es NULL. El listado deberá estar ordenado alfabéticamente por apellidos y nombre.
+
+    @Test
+    void  test7() {
+
+        // Funcion creada en ClienteRepository
+        List<ClienteRepository.IdNomApellido1> list = clienteRepository.findByApellido2IsNotNullOrderByApellido1AscApellido2AscNombre();
+        list.forEach(System.out::println);
+
+        // Consulta con @Query en ClienteRepository
+        List<ClienteRepository.IdNomApellido1> list2 = clienteRepository.obteneridNomApell1();
+        list2.forEach(System.out::println);
+
+        // Consulta con EntityManager
+        List<ClienteRepository.IdNomApellido1> list3 = entityManager.createQuery("""
+                select c.id, c.nombre, c.apellido1 
+                from Cliente c 
+                order by c.apellido1, c.apellido2, c.nombre
+                """, ClienteRepository.IdNomApellido1.class).getResultList();
+        list3.forEach(System.out::println);
+
+    }
 
 //    Devuelve un listado de los nombres de los clientes que empiezan por A y terminan por n y también los nombres que empiezan por P. El listado deberá estar ordenado alfabéticamente.
 
